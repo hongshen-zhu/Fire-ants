@@ -23,5 +23,32 @@ for(i in 1:n){
   year[i] <- split_text[2*i]
 }
 
-fire_ant_dat <- data.frame(state="Alabama", county=county,year=year)
+fire_ant_dat_1 <- data.frame(state="Alabama", county=county,year=year)
 
+#####
+
+arkansas <- "Ashley (1963), Bradley (1972), Calhoun (1977), Chicot (1973), Cleveland (1983), Columbia (1975), Dallas (1987), Desha (1983), Drew (1976), Grant (1991), Hempstead (1987), HotSpring (1995), Howard (1988), Jefferson (1987), Lafayette (1972), Lincoln (1987), LittleRiver (1987), Miller (1977), Nevada (1987), Ouachita (1983), Union (1958)"
+
+split_text <- str_split(arkansas, " ") %>%
+  .[[1]] %>%
+  str_replace("\\(","") %>%
+  str_replace("\\)","") %>%
+  str_replace("\\,","")
+
+split_text[23] <- "Hot Spring"
+split_text[33] <- "Little River"
+
+# how many county-year pair
+n <- length(split_text)/2
+
+# create vectors to save the splited county and year info
+county <- rep(NA,n)
+year <- rep(NA,n)
+
+# put county and year into 2 vectors
+for(i in 1:n){
+  county[i] <- split_text[2*i-1]
+  year[i] <- split_text[2*i]
+}
+
+fire_ant_dat_2 <- data.frame(state="Arkansas", county=county,year=year)
