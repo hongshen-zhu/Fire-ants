@@ -52,3 +52,6 @@ for(i in 1:n){
 }
 
 fire_ant_dat_2 <- data.frame(state="Arkansas", county=county,year=year)
+
+
+###
